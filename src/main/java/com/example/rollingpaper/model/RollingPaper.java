@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @Getter
@@ -22,5 +23,8 @@ public class RollingPaper {
 
     @Column
     private String content;
+
+    @OneToMany(mappedBy = "rollingpaper",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments;
 
 }

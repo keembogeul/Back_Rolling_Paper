@@ -10,10 +10,14 @@ public class RollingPaperResponseDto {
     private Long id;
     private String name;
     private String content;
+    private String left;
+    private String top;
 
     public RollingPaperResponseDto(RollingPaper rollingPaper) {
         this.id = rollingPaper.getId();
         this.name = rollingPaper.getName();
         this.content = rollingPaper.getContent();
+        this.left = rollingPaper.getLeft();
+        this.top = rollingPaper.getTop();
     }
 }

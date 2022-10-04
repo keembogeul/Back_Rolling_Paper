@@ -1,5 +1,6 @@
 package com.example.rollingpaper.service;
 
+import com.example.rollingpaper.dto.ChangeLocationDto;
 import com.example.rollingpaper.dto.ResponseDto;
 import com.example.rollingpaper.dto.RollingPaperRequestDto;
 import com.example.rollingpaper.dto.RollingPaperResponseDto;
@@ -24,6 +25,8 @@ public class RollingPaperService {
         RollingPaper rollingPaper = RollingPaper.builder()
                 .name(requestDto.getName())
                 .content(requestDto.getContent())
+                .left(requestDto.getLeft())
+                .top(requestDto.getTop())
                 .build();
         rollingPaperRepository.save(rollingPaper);
 
@@ -48,6 +51,19 @@ public class RollingPaperService {
         if (rollingPaper.isEmpty()) {
             throw new IllegalArgumentException("존재하지 않는 롤링페이퍼입니다.");
         }
+
+        RollingPaperResponseDto response = new RollingPaperResponseDto(rollingPaper.get());
+        return ResponseDto.success(response);
+    }
+
+    @Transactional
+    public ResponseDto<?> changeLocation(Long rollingPaperId, ChangeLocationDto changeLocationDto) {
+        Optional<RollingPaper> rollingPaper = rollingPaperRepository.findById(rollingPaperId);
+        if (rollingPaper.isEmpty()) {
+            throw new IllegalArgumentException("존재하지 않는 롤링페이퍼입니다.");
+        }
+
+        rollingPaper.get().changeLocation(changeLocationDto);
 
         RollingPaperResponseDto response = new RollingPaperResponseDto(rollingPaper.get());
         return ResponseDto.success(response);

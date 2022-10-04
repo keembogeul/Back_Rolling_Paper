@@ -1,5 +1,6 @@
 package com.example.rollingpaper.controller;
 
+import com.example.rollingpaper.dto.ChangeLocationDto;
 import com.example.rollingpaper.dto.ResponseDto;
 import com.example.rollingpaper.dto.RollingPaperRequestDto;
 import com.example.rollingpaper.service.RollingPaperService;
@@ -29,5 +30,11 @@ public class RollingPaperController {
     @GetMapping("/rolling-paper/{rollingPaperId}")
     public ResponseDto<?> detailRollingPaper(@PathVariable Long rollingPaperId) {
         return rollingPaperService.getDetailRollingPaper(rollingPaperId);
+    }
+
+    @PatchMapping("/rolling-paper/{rollingPaperId}")
+    public ResponseDto<?> updateLocation(@PathVariable Long rollingPaperId,
+                                         @RequestBody ChangeLocationDto changeLocationDto) {
+        return rollingPaperService.changeLocation(rollingPaperId, changeLocationDto);
     }
 }

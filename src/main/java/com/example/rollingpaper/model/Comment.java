@@ -7,21 +7,21 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Builder
+@Entity
 public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column
+    @Column(nullable = false)
     private String nickname;
 
-    @Column
+    @Column(nullable = false)
     private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY)

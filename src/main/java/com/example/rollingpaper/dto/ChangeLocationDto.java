@@ -5,9 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class RollingPaperRequestDto {
-    private String name;
-    private String content;
+public class ChangeLocationDto {
     private String left;
     private String top;
 }

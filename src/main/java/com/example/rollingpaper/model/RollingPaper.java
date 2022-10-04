@@ -28,8 +28,11 @@ public class RollingPaper {
     @Column(name = "left_location", nullable = false)
     private String left;
 
-    @Column(name = "right_location", nullable = false)
+    @Column(name = "top_location", nullable = false)
     private String top;
+
+    @Column(nullable = false)
+    private String color;
 
     public void changeLocation(ChangeLocationDto changeLocationDto) {
         this.left = changeLocationDto.getLeft();

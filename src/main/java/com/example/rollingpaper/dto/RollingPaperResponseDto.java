@@ -12,6 +12,7 @@ public class RollingPaperResponseDto {
     private String content;
     private String left;
     private String top;
+    private String color;
 
     public RollingPaperResponseDto(RollingPaper rollingPaper) {
         this.id = rollingPaper.getId();
@@ -19,5 +20,6 @@ public class RollingPaperResponseDto {
         this.content = rollingPaper.getContent();
         this.left = rollingPaper.getLeft();
         this.top = rollingPaper.getTop();
+        this.color = rollingPaper.getColor();
     }
 }

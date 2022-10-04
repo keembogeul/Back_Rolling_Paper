@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="rolling@rolling.c9hyhbkvjtf6.ap-northeast-2.rds.amazonaws.com" uuid="aacc83ad-00fb-4b36-b4f8-2c505235667c">
+    <data-source source="LOCAL" name="MySQL" uuid="063bd4af-1d37-45a4-ad4b-39600bfc460f">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://rolling.c9hyhbkvjtf6.ap-northeast-2.rds.amazonaws.com:3306/rolling</jdbc-url>
+      <jdbc-url>jdbc:mysql://springboot-database.c9hyhbkvjtf6.ap-northeast-2.rds.amazonaws.com :3306/myselectshop</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

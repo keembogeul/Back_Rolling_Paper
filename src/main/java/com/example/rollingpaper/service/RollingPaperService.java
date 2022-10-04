@@ -27,6 +27,7 @@ public class RollingPaperService {
                 .content(requestDto.getContent())
                 .left(requestDto.getLeft())
                 .top(requestDto.getTop())
+                .color(requestDto.getColor())
                 .build();
         rollingPaperRepository.save(rollingPaper);
 

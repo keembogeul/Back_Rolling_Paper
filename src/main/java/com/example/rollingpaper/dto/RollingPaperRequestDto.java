@@ -10,4 +10,5 @@ public class RollingPaperRequestDto {
     private String content;
     private String left;
     private String top;
+    private String color;
 }

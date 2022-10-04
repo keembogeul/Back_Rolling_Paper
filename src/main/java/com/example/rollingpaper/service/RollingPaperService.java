@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,6 +39,17 @@ public class RollingPaperService {
             rollingPaperResponseDtoList.add(new RollingPaperResponseDto(rollingPaper));
         }
 
-        return ResponseDto.success(rollingPaperList);
+        return ResponseDto.success(rollingPaperResponseDtoList);
+    }
+
+    @Transactional
+    public ResponseDto<?> getDetailRollingPaper(Long rollingPaperId) {
+        Optional<RollingPaper> rollingPaper = rollingPaperRepository.findById(rollingPaperId);
+        if (rollingPaper.isEmpty()) {
+            throw new IllegalArgumentException("존재하지 않는 롤링페이퍼입니다.");
+        }
+
+        RollingPaperResponseDto response = new RollingPaperResponseDto(rollingPaper.get());
+        return ResponseDto.success(response);
     }
 }

@@ -22,8 +22,12 @@ public class RollingPaperController {
     }
 
     @GetMapping("/rolling-paper")
-    public ResponseDto<?> getRollingPaper() {
+    public ResponseDto<?> rollingPaperAll() {
         return rollingPaperService.getAllRollingPaper();
     }
 
+    @GetMapping("/rolling-paper/{rollingPaperId}")
+    public ResponseDto<?> detailRollingPaper(@PathVariable Long rollingPaperId) {
+        return rollingPaperService.getDetailRollingPaper(rollingPaperId);
+    }
 }

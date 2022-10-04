@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,15 +25,25 @@ public class CommentService {
     @Transactional
     public ResponseDto<?> createComment(CommentRequestDto requestDto){
         Optional<RollingPaper> rollingPaper = rollingPaperRepository.findById(requestDto.getRollingPaperId());
-        if(!rollingPaper.isPresent()){
+        if(rollingPaper.isEmpty()){
             throw new IllegalArgumentException("존재하지 않는 롤링페이퍼입니다.");
         }
         Comment comment = Comment.builder()
                 .nickname(requestDto.getNickname())
                 .comment(requestDto.getComment())
-                .rollingpaper(rollingPaper.get())
+                .rollingPaper(rollingPaper.get())
                 .build();
         commentRepository.save(comment);
         return ResponseDto.success(new CommentResponseDto(comment));
+    }
+
+    @Transactional
+    public ResponseDto<?> getAllCommentsByRollingPaper(Long rollingPaperId){
+        List<Comment> comments = commentRepository.findALlByRollingPaperId(rollingPaperId);
+        List<CommentResponseDto> commentResponseDtoList = new ArrayList<>();
+        for(Comment comment : comments){
+            commentResponseDtoList.add(new CommentResponseDto(comment));
+        }
+        return ResponseDto.success(commentResponseDtoList);
     }
 }

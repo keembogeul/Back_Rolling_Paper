@@ -26,5 +26,5 @@ public class Comment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rollingpaper_id")
-    private RollingPaper rollingpaper;
+    private RollingPaper rollingPaper;
 }

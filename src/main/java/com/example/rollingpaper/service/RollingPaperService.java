@@ -38,6 +38,6 @@ public class RollingPaperService {
             rollingPaperResponseDtoList.add(new RollingPaperResponseDto(rollingPaper));
         }
 
-        return ResponseDto.success(rollingPaperList);
+        return ResponseDto.success(rollingPaperResponseDtoList);
     }
 }

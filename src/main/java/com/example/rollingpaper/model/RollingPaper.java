@@ -24,7 +24,4 @@ public class RollingPaper {
     @Column
     private String content;
 
-    @OneToMany(mappedBy = "rollingpaper",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments;
-
 }
